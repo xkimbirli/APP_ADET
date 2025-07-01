@@ -1,0 +1,320 @@
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #1a043c, #8b1b80); 
+  color: #ffffff;
+}
+
+/* Layout Containers */
+.pdfybot-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.document-viewer {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 10rem;
+  width: 100%;
+}
+
+.document-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 2rem;
+}
+
+.document-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.document-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Icon Button */
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #9D4EDD;
+  background-color: rgba(224, 170, 255, 0.2);
+}
+
+/* Notes container */
+.notes-container {
+  display: block; /* Ensures it behaves like a block element */
+  width: 100%; /* Full width of the parent; adjust if needed */
+  max-width: 800px; /* Optional: limit max width for readability */
+  margin: 2rem auto; /* Center the block horizontally with spacing */
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background-color: #fcf9ff;
+
+  border: 1px solid #3C096C;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings and text inside */
+.notes-container h3,
+.notes-content p {
+  color: #000000;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Chat Floating Button */
+.chat-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #7B2CBF;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.chat-toggle:hover {
+  background-color: #9D4EDD;
+  transform: scale(1.05);
+}
+
+.chat-toggle.active {
+  background-color: #C77DFF;
+}
+
+/* Chat Interface */
+.chat-interface {
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  width: 350px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fcf9ff;
+  border: 1px solid #3C096C;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(75, 0, 130, 0.2);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 1rem;
+  background-color: #7B2CBF;
+  color: #ffffff;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.message {
+  max-width: 80%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border-radius: 1rem;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background-color: #7f6f8f;
+  color: #000000;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #9D4EDD;
+  color: #ffffff;
+  border-bottom-right-radius: 0.25rem;
+}
+
+/* Chat Input */
+.chat-input {
+  display: flex;
+  padding: 1rem;
+  background-color: transparent;
+  border-top: 1px solid #3C096C;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #3C096C;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: #fcf9ff;
+  color: #000000;
+}
+
+.chat-input input:focus {
+  border-color: #9D4EDD;
+}
+
+.chat-input button {
+  margin-left: 0.5rem;
+  padding: 0 1rem;
+  background-color: #7B2CBF;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chat-input button:hover {
+  background-color: #9D4EDD;
+}
+
+/* PDF Viewer */
+.pdf-viewer-container {
+  width: 100%;
+  background-color: #fcf9ff;
+  border: 1px solid #3C096C;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 70vh;
+  border: none;
+}
+
+/* Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  padding: 0 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #9d68c8;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #fcf9ff;
+  color: #000000;
+  border: 1px solid #3C096C;
+}
+
+.btn-secondary:hover {
+  background-color: #3C096C;
+  color: #ffffff;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(16, 0, 43, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #fcf9ff;
+  border: 1px solid #3C096C;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(75, 0, 130, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .document-viewer {
+    padding: 6rem 1rem 0;
+  }
+
+  .document-header,
+  .action-buttons {
+    padding: 0 1rem;
+  }
+
+  .chat-interface {
+    width: calc(100% - 2rem);
+    right: 1rem;
+    bottom: 5.5rem;
+    max-height: 60vh;
+  }
+
+  .chat-toggle {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}
